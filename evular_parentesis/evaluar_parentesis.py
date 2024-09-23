@@ -14,13 +14,7 @@ def evaluate(expresion:str) -> bool:
     
     return True if len(stack) == 0 else False
     
-                  
-
-        
     
 isValid = evaluate(expresion)
 print('expresion es correcta?: ', isValid)
-
-# print('Expresion es: ', stack)
-# print('Expresion valida: ', evualuate(expresion))
 
