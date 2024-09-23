@@ -1,34 +1,26 @@
 # Leemos la expresion
 expresion = input('Ingrese la expresion: ')
 
-def evualuate (expresion):
-    # Ponemos los dos terminos del stack
+def evaluate(expresion:str) -> bool:
+    if expresion[0] == ')': return False
+    
     stack = [expresion[0]]
     
-    item = 0
-    # Vamos a recorrer la expresion varias veces
-    # si recorremos toda la expresion no tenemos mas match
-    # quiere decir que la expresion no es valida
-    times = 1
-    while times < 2:
-        # empezamos desde el segundo item
-        for i in range((len(expresion) - 1), 1, -1):
-            
-            if (expresion[last_item] == ')' and expresion[i] == '(' 
-            or expresion[last_item] == '(' and expresion[i] == ')' ):
-                # hacemos pop de los dos elementos
-                stack.pop()
-                stack.pop(i)
-                
-                # actualizo mi last_item
-                last_item = len(stack) - 1   
+    for i in range(1,len(expresion)):
+        if expresion[i] == ')' and stack[-1] == '(':
+            stack.pop()
+        else:
+            stack.append(expresion[i])
+    
+    return True if len(stack) == 0 else False
+    
                   
 
         
     
-
-
+isValid = evaluate(expresion)
+print('expresion es correcta?: ', isValid)
 
 # print('Expresion es: ', stack)
-print('Expresion valida: ', parentesis(expresion))
+# print('Expresion valida: ', evualuate(expresion))
 
