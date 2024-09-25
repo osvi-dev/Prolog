@@ -1,0 +1,16 @@
+(defun areaCuadrado()
+	(princ "Digite el valor del l")
+	(setq l (read))
+	(let (area( * l l) ))
+	(format t "El area del cuadrado es: ~area" )	
+)
+
+(defun areaRectangulo()
+	(princ "Digite el valor de la base")
+	(setq b (read))
+	(princ "Digite el valor de la altura ")
+	(setq a (read))
+	(let (area (* b a)))
+	(format t "El area del cuadrado es: ~l" l)	
+)
+
