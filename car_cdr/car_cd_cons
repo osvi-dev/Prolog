@@ -1,0 +1,27 @@
+con cons nos agrega elementos a una lista
+
+teniendo esta lista '(a b c d e f g h) 
+retornar el cuarto elemento
+retornar los pirmeros 3
+
+regresar los primeros 3
+eliminar el primer y el ultimo
+sumar los primeros 3 numeros 
+recorrer toda la lista
+invertir los pares de lista
+
+
+# Retornar el cuarto elemento
+(cadddr'(a b c d e f g h))
+
+# Retornar los ultimos 3
+(cons(cdddr'(a b c d e f g h)) '()) # tenemos que agregar la lista vacia
+ 
+# Retornar los primeros 3
+
+
+
+caar# tiene que ser una lista de listas para poder ponerlo
+ 
+ 
+
