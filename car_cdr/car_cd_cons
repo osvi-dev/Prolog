@@ -4,7 +4,7 @@ teniendo esta lista '(a b c d e f g h)
 retornar el cuarto elemento
 retornar los pirmeros 3
 
-regresar los primeros 3
+regresar los ultimos  3
 eliminar el primer y el ultimo
 sumar los primeros 3 numeros 
 recorrer toda la lista
