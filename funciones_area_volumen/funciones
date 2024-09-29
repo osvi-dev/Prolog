@@ -43,3 +43,56 @@
 	(setq h (read))
 	(format t "El area del rombiode es: ~a" (* b h))
 )
+
+(defun volumenCubo ()
+	(princ "Volumen de un cubo")
+	(princ #\Newline)
+  	(princ "Digite el valor del lado del cubo: ")
+  	(setq lado (read))
+  	(format t "El volumen del cubo es: ~a" (* lado lado lado))
+)
+
+(defun volumenEsfera ()
+
+  	(princ "Volumen de una Esfera")
+  	(princ #\Newline)
+  	(princ "Digite el valor del radio de la esfera: ")
+  	(setq radio (read))
+  	(format t "El volumen de la esfera es: ~a" (* (/ 4 3) 3.14159 (* radio radio radio)))
+)
+
+(defun volumenCilindro ()
+	(princ "Volumen de un Cilindro")
+	(princ #\Newline)
+  	(princ "Digite el valor del radio de la base del cilindro: ")
+  	(setq radio (read))
+  	(princ "Digite el valor de la altura del cilindro: ")
+  	(setq altura (read))
+  	(format t "El volumen del cilindro es: ~a" (* 3.14159 (* radio radio) altura))
+)
+
+(defun volumenCono ()
+	(princ "Volumen de un Cono")
+	(princ #\Newline)
+  	(princ "Digite el valor del radio de la base del cono: ")
+  	(setq radio (read))
+  	(princ "Digite el valor de la altura del cono: ")
+  	(setq altura (read))
+  	(format t "El volumen del cono es: ~a~%" (* (/ 1 3) 3.14159 (* radio radio) altura))
+)
+
+(defun volumenPrismaRectangular ()
+  	(princ "Volumen de un Prisma Rectangular")
+	(princ #\Newline)
+  	(princ "Digite el valor del largo del prisma: ")
+  	(setq largo (read))
+  	(princ "Digite el valor del ancho del prisma: ")
+  	(setq ancho (read))
+  	(princ "Digite el valor de la altura del prisma: ")
+  	(setq altura (read))
+  	(format t "El volumen del prisma rectangular es: ~a" (* largo ancho altura))
+
+)
+
+
+
