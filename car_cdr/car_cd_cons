@@ -15,12 +15,31 @@ invertir los pares de lista
 (cadddr'(a b c d e f g h))
 
 # Retornar los primeros 3
-
+(defun primeros-tres (lista)
+  (cons (car lista)
+        (cons (car (cdr lista))
+              (cons (car (cdr (cdr lista))) '()))))
 
 # Retornar los ultimos 3
 (cons(cddr(cdddr'(a b c d e f g h))) '()) # tenemos que agregar la lista vacia
  
+#eliminar el primer y el ultimo
+(cons(cddr(cons(cdr '(a b c d e f g h)) ' ())))
 
+
+# sumar los primeros 3 numeros 
+(defun suma-primeros-tres (lista)
+  (+ (car lista)
+     (car (cdr lista))
+     (car (cdr (cdr lista)))))
+
+# recorrer toda la lista
+(defun recorrer (lista)
+	(when lista
+	(print (car lista))
+	(recorrer (cdr lista))
+	)
+)
 
 
 caar# tiene que ser una lista de listas para poder ponerlo
