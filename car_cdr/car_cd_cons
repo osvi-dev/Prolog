@@ -14,10 +14,12 @@ invertir los pares de lista
 # Retornar el cuarto elemento
 (cadddr'(a b c d e f g h))
 
-# Retornar los ultimos 3
-(cons(cdddr'(a b c d e f g h)) '()) # tenemos que agregar la lista vacia
- 
 # Retornar los primeros 3
+
+
+# Retornar los ultimos 3
+(cons(cddr(cdddr'(a b c d e f g h))) '()) # tenemos que agregar la lista vacia
+ 
 
 
 
