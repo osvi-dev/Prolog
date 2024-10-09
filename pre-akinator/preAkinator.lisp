@@ -34,3 +34,13 @@
                            (Luna_Lovegood (Estudiante (Buena)))
                            (Cho_Chang (Estudiante (Buena)))))))
 ))
+
+(defun recorrer (lista)
+  (when lista
+    (let ((elemento (car lista)))
+    (format t "Tu personaje es de la casa ~a?~%" (car elemento))
+    ;(format t "Aributos: ")
+    (recorrer (cdr lista)))) 
+  )
+
+; Como estraer si se cumple?
