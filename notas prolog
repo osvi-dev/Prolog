@@ -1,0 +1,37 @@
+No tienen que empezar con mayusculas.
+
+Si es mayuscula lo toma como una variable.
+
+para cargar el archivo en prolog con es:
+consult("nombre.pl").
+
+Si ponemos el predicado
+padrede(juan, jose). -> estamos diciendo que juan es papa de jose
+
+padrede(X,Y). ->saca todos los predicados que sean padres de.
+
+si hacemos este predicado
+padrede(pedro, X). -> Nos arroja todos los hijos de pedro.
+
+o si bien, si decimos
+padrede(X, maria). -> nos dira quien es el padre de maria.
+
+
+para hacer una regla que cumpla una caracterisca se define asi:
+
+la coma "," nos quiere decir un and
+abuelo(X,Y):-padrede(X,Z), padre(Z,Y).
+
+abuelo(X,Y):- padrede(juan, jose), padrede(jose, elpepe)
+
+primero buscamos con juan si tiene un hijo en este caso si es jose, 
+despues para verificar si es abuelo, jose tiene que tener un hijo.
+Como ambos cumplen nos quiere decir que juan es abuelo de elpepe.
+
+el punto y coma nos quiere decir or.
+
+
+Hacer la regla de tio, hermano, abuelos, cuñado, primo
+
+cuantificadores: universal ∀ y el existencial ∃
+
