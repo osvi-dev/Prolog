@@ -70,14 +70,24 @@ template([que, piensas, de, mi, '?'], ['Pienso', que, deberias, de, tomar, una, 
 % Recomendaciones
 template(['Eliza', recomiendame, una, cancion, '.'], ['Te', recomiendo, la, cancion, de, 'La ciudad de las luces de latin mafia'], []).
 template([eliza, recomiendame, una, cancion, '.'], ['Te', recomiendo, la, cancion, de, 'La ciudad de las luces de latin mafia'], []).
-template(['Eliza', recomiendame, una, serie, '.'], ['Te', recomiendo, 'The Office.']).
-template([eliza, recomiendame, una, serie, '.'], ['The Office es una muy buena serie la recomiendo.']).
+template(['Eliza', recomiendame, una, serie, '.'], ['Te', recomiendo, 'The Office.'], []).
+template([eliza, recomiendame, una, serie, '.'], ['The Office es una muy buena serie la recomiendo.'], []).
 template(['Eliza', carta, blanca, o, corona, '?'], ['Carta', blanca, es, mas, barata], []).
 template([eliza, carta, blanca, o, corona, '?'], ['Carta', blanca, es, mas, barata], []).
 
 template(['Eliza', puedes, mentarme, la, madre, '?'], ['Camara', ya, te, la, 'sabes.', mi, pinche, todo, tibio], []).
 template([eliza, puedes, mentarme, la, madre, '?'], ['Camara', ya, te, la, 'sabes.', mi, pinche, todo, tibio], []).
-				  
+
+% template para saber donde es eliza
+template([eliza, eres, de, s(_), '?'], [flagWhere], [3]).
+template([eliza, viviste, en, s(_), '?'], [flagWhere], [3]).		
+
+% eliza te dice si es un buen cafe
+template([oye, eliza, estoy, tomando, un, s(_), es, un, buen, cafe, '?'], [flagCoffe], [5]).
+template([eliza, estoy, tomando, un, s(_), es, un, buen, cafe, '?'], [flagCoffe], [4]).
+template([eliza, me, dieron, un, s(_), sabes, si, es, un, buen, cafe, '?'], [flagCoffe], [4]).
+
+
 template(_, ['Please', explain, a, little, more, '.'], []). 
 % Lo que le gusta a eliza : flagLike
 elizaLikes(X, R):- likes(X), R = ['Yeah', i, like, X].
@@ -107,6 +117,25 @@ is0(nice).
 is0(fine).
 is0(happy).
 is0(redundant).
+
+% eliza de donde es
+elizaWhere(X,R):- where(X), R = ['Sabes', demasiado, tendremos, que, neutrazalizarte].
+elizaWhere(X, R):- \+where(X), R = ['Efectivamente', soy, de, X].
+
+where('NASA').
+where('Chilchota').
+where('Morelia').
+
+% eliza cafe 
+elizaCoffe(X,R):- coffe(X), R = ['Efectivamente', el, X, un, buen, cafe].
+elizaCoffe(X,R):- \+coffe(X), R = ['Guacala', a, eso, no, se, le, puede, llamar, cafe].
+
+coffe(flatwhite).
+coffe(spresso).
+coffe(coldbrew).
+coffe(americano).
+coffe(late).
+coffe(capuchino).
 
 match([],[]).
 match([], _):- true.
@@ -155,3 +184,18 @@ replace0([I|Index], Input, N, Resp, R):-
 	select(N, Resp, Atom, R1),
 	N1 is N + 1,
 	replace0(Index, Input, N1, R1, R),!.
+
+% Eliza where:
+replace0([I|_], Input, _, Resp, R):-
+	nth0(I, Input, Atom),
+	nth0(0, Resp, X),
+	X == flagWhere,
+	elizaWhere(Atom, R).
+
+% Eliza cafe
+
+replace0([I|_], Input, _, Resp, R):-
+	nth0(I, Input, Atom),
+	nth0(0, Resp, X),
+	X == flagCoffe,
+	elizaCoffe(Atom, R).
