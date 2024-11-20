@@ -1,0 +1,1 @@
+member(X, ["mandarinas", "fresas", "cafe", "chocolate_amargo", "pizza"])
