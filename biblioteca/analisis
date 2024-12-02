@@ -1,0 +1,119 @@
+1. La Biblioteca Nacional tiene el libro "Don Quijote de la Mancha".
+   Variables/Constantes: "Don Quijote de la Mancha", biblioteca_nacional
+   Propiedades: libro_en_biblioteca
+   Cuantificador: N/A
+   Acción: Registrar que un libro pertenece a una biblioteca.
+
+2. Todos los libros en la Biblioteca Nacional están catalogados.
+   Variables/Constantes: L (variable para libros), biblioteca_nacional
+   Propiedades: catalogado, libro_en_biblioteca
+   Cuantificador: ∀ (para todos los libros)
+   Acción: Catalogar libros de la Biblioteca Nacional.
+
+3. Existen libros que están en más de una biblioteca.
+   Variables/Constantes: L (variable para libros), biblioteca_nacional, biblioteca_central
+   Propiedades: libro_en_biblioteca
+   Cuantificador: ∃ (existe al menos uno)
+   Acción: Registrar libros en varias bibliotecas.
+
+4. Si un libro es raro, entonces no se puede prestar.
+   Variables/Constantes: L (variable para libros)
+   Propiedades: libro_raro, no_prestable
+   Cuantificador: ∀ (para todos los libros raros)
+   Acción: Restringir préstamos de libros raros.
+
+5. La Biblioteca Central tiene más de 10,000 libros.
+   Variables/Constantes: biblioteca_central, 10000
+   Propiedades: cantidad_libros
+   Cuantificador: N/A
+   Acción: Indicar cantidad de libros en la Biblioteca Central.
+
+6. Todos los autores tienen al menos un libro en una biblioteca.
+   Variables/Constantes: A (autor), L (libro)
+   Propiedades: autor_con_libro, libro_de_autor, libro_en_biblioteca
+   Cuantificador: ∀ (para todos los autores)
+   Acción: Asociar autores con libros en bibliotecas.
+
+7. Existe un autor que tiene más de 5 libros publicados.
+   Variables/Constantes: autor_famoso, L (lista de libros)
+   Propiedades: libros_de_autor
+   Cuantificador: ∃ (existe al menos uno)
+   Acción: Indicar autores con más de 5 libros.
+
+8. No todos los libros de la biblioteca están en buen estado.
+   Variables/Constantes: L (libro)
+   Propiedades: buen_estado
+   Cuantificador: ¬∀ (no para todos los libros)
+   Acción: Señalar libros en mal estado.
+
+9. Si un libro está en buen estado, puede ser prestado.
+   Variables/Constantes: L (libro)
+   Propiedades: buen_estado, prestado
+   Cuantificador: ∀ (para todos los libros en buen estado)
+   Acción: Permitir préstamos si está en buen estado.
+
+10. Todos los usuarios registrados pueden tomar prestado un libro.
+    Variables/Constantes: U (usuario)
+    Propiedades: usuario_registrado, puede_prestamo
+    Cuantificador: ∀ (para todos los usuarios registrados)
+    Acción: Registrar usuarios con derecho a préstamos.
+
+11. Existen libros que solo se pueden consultar en la biblioteca.
+    Variables/Constantes: L (libro)
+    Propiedades: solo_consulta
+    Cuantificador: ∃ (existe al menos uno)
+    Acción: Restringir ciertos libros a consulta interna.
+
+12. Todo libro prestado debe ser devuelto en 15 días.
+    Variables/Constantes: L (libro), D (días)
+    Propiedades: prestado, devolucion
+    Cuantificador: ∀ (para todos los libros prestados)
+    Acción: Establecer regla de devolución en 15 días.
+
+13. Hay un libro que nadie ha pedido en préstamo.
+    Variables/Constantes: "Libro Olvidado"
+    Propiedades: no_pedido_en_prestamo
+    Cuantificador: ∃ (existe al menos uno)
+    Acción: Registrar libros sin préstamos.
+
+14. Si un usuario tiene una multa, no puede pedir un libro prestado.
+    Variables/Constantes: U (usuario)
+    Propiedades: tiene_multa, no_prestamo
+    Cuantificador: ∀ (para todos los usuarios con multa)
+    Acción: Bloquear préstamos a usuarios con multas.
+
+15. Todos los libros escritos por un mismo autor están en la misma sección.
+    Variables/Constantes: A (autor), L (libro), S (sección)
+    Propiedades: seccion_de_autor, libro_de_autor, seccion
+    Cuantificador: ∀ (para todos los libros de un autor)
+    Acción: Agrupar libros por autor en la misma sección.
+
+16. Existe un libro que tiene más de un ejemplar en la biblioteca.
+    Variables/Constantes: L (libro), N (número de ejemplares)
+    Propiedades: ejemplares
+    Cuantificador: ∃ (existe al menos uno)
+    Acción: Registrar libros con múltiples ejemplares.
+
+17. Todo usuario con más de tres préstamos debe devolver uno para pedir otro.
+    Variables/Constantes: U (usuario), N (número de préstamos)
+    Propiedades: limite_prestamos, prestamos_actuales
+    Cuantificador: ∀ (para todos los usuarios con más de 3 préstamos)
+    Acción: Limitar préstamos adicionales hasta que devuelvan.
+
+18. Hay una sección de la biblioteca donde todos los libros son de ciencias.
+    Variables/Constantes: S (sección), L (libro)
+    Propiedades: seccion_ciencias, es_de_ciencias
+    Cuantificador: ∃ (existe al menos una sección)
+    Acción: Registrar sección donde todos los libros son de ciencias.
+
+19. No todos los libros en la biblioteca tienen más de 100 páginas.
+    Variables/Constantes: L (libro)
+    Propiedades: mas_de_100_paginas
+    Cuantificador: ¬∀ (no para todos los libros)
+    Acción: Registrar libros con menos de 100 páginas.
+
+20. Existe un usuario que ha tomado prestados todos los libros de la sección infantil.
+    Variables/Constantes: U (usuario), S (sección), L (libro)
+    Propiedades: todos_los_libros_prestados, seccion, prestado_a
+    Cuantificador: ∃ (existe al menos un usuario)
+    Acción: Registrar usuarios que han tomado todos los libros de una sección.
