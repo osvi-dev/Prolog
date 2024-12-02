@@ -42,6 +42,7 @@ template([yo, soy, s(_),'.'], [porque, eres, tu, 0, '?'], [2]).
 % pregunta algo que le gusta a eliza
 template([te, gustan, las, s(_), _], [flagLike], [3]).
 template([te, gustan, los, s(_), _], [flagLike], [3]).
+template([dime, tus, gustos, _], gustosEliza, []).
 
 % pregunta algo que hace eliza
 template([tu, eres, s(_), _], [flagDo], [2]).
@@ -199,3 +200,5 @@ replace0([I|_], Input, _, Resp, R):-
 	nth0(0, Resp, X),
 	X == flagCoffe,
 	elizaCoffe(Atom, R).
+
+gustosEliza() :- likes(X).
