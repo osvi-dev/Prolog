@@ -185,7 +185,7 @@ padrede(javier, sarahi).
 
 madrede(teresa, jose_antonio).
 madrede(teresa, hermila).
-madrede(salvador).
+madrede(teresa, salvador).
 
 madrede(rafaela, patricia).
 madrede(rafaela, erick).
@@ -203,7 +203,7 @@ madrede(gabriela, telli).
 madrede(gabriela, gaby_chiquita).
 
 madrede(yaya, natalia).
-madrede(pato).
+madrede(yaya, pato).
 
 madrede(mary, regina).
 
