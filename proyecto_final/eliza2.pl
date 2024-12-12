@@ -102,20 +102,40 @@ template([eliza, quienes, son, los, padres, de, s(_)], [flagPadres], [6]).
 
 
 % --------------------Templates para acertijo de medicina ------------
-template([eliza, que, especialidad, tiene, Medico], [Medico, 'trabaja en la especialidad de', E], []) :-
-    especialidad(Medico, E).
+% Consulta de médico con base en su especialidad
+template([eliza, quien, es, el, medico, de, Especialidad], [Medico, 'es el medico que trabaja en la especialidad de', Especialidad], []) :-
+    especialidad_de(Medico, Especialidad).
 
-% Consulta de hospital
-template([eliza, donde, trabaja, Medico], [Medico, 'trabaja en el hospital', H], []) :-
-    hospital(Medico, H).
+% Consulta de médico con base en su hospital
+template([eliza, quien, trabaja, en, el, hospital, Hospital], [Medico, 'trabaja en el hospital', Hospital], []) :-
+    hospital_de(Medico, Hospital).
 
-% Consulta de equipo
-template([eliza, que, equipo, usa, Medico], [Medico, 'usa el equipo', Eq], []) :-
-    equipo(Medico, Eq).
+% Consulta de médico con base en su equipo
+template([eliza, quien, usa, el, equipo, Equipo], [Medico, 'usa el equipo', Equipo], []) :-
+    equipo_de(Medico, Equipo).
 
-% Consulta de interés
-template([eliza, que, interes, tiene, Medico], [Medico, 'tiene interés en', I], []) :-
-    interes(Medico, I).
+% Consulta de médico con base en su interés
+template([eliza, quien, tiene, interes, en, Interes], [Medico, 'tiene interés en', Interes], []) :-
+    interes_de(Medico, Interes).
+
+% Consulta general: especialidad y hospital de un médico
+template([eliza, que, especialidad, y, hospital, tiene, Medico], [Medico, 'trabaja en la especialidad de', Especialidad, 'y en el hospital', Hospital], []) :-
+    especialidad_de(Medico, Especialidad),
+    hospital_de(Medico, Hospital).
+
+% Consulta general: equipo y hospital de un médico
+template([eliza, que, equipo, y, hospital, usa, Medico], [Medico, 'usa el equipo', Equipo, 'y trabaja en el hospital', Hospital], []) :-
+    equipo_de(Medico, Equipo),
+    hospital_de(Medico, Hospital).
+
+% Consulta general: interés y especialidad de un médico
+template([eliza, que, interes, y, especialidad, tiene, Medico], [Medico, 'tiene interés en', Interes, 'y trabaja en la especialidad de', Especialidad], []) :-
+    interes_de(Medico, Interes),
+    especialidad_de(Medico, Especialidad).
+
+% Consulta combinada: especialidad, hospital, equipo e interés
+template([eliza, dame, toda, la, informacion, de, Medico], [Medico, 'trabaja en la especialidad de', Especialidad, ' en el hospital', Hospital, ', usa el equipo', Equipo, 'y tiene interés en', Interes], []) :-
+    resolver_relacion(Medico, Especialidad, Hospital, Equipo, Interes).
 
 % ----------------- Templates Harry Potter -----------------------
 
@@ -412,10 +432,10 @@ read_line_as_list(Input) :-
 
 
 % --------------------- hechos para problema medicina -----------------
-medico(ana).  
-medico(bruno).  
-medico(carla).  
-medico(diego).  
+medico(ana).
+medico(bruno).
+medico(carla).
+medico(diego).
 medico(elena).
 
 especialidad(cardiologia).
@@ -441,6 +461,56 @@ interes(farmacologia).
 interes(inmunologia).
 interes(bioetica).
 interes(microbiologia).
+
+% Carla no trabaja en el Hospital General ni en el Privado, y no estudia neurología.
+restriccion(carla, _, general, _).
+restriccion(carla, _, privado, _).
+restriccion(carla, neurologia, _, _).
+
+% La persona que utiliza el electrocardiógrafo trabaja en cardiología en el Hospital Militar, pero no es Diego.
+restriccion(diego, cardiologia, militar, electrocardiografo).
+
+% Bruno está interesado en farmacología, pero no trabaja en el Hospital Regional ni en el Militar.
+restriccion(bruno, _, regional, _).
+restriccion(bruno, _, militar, _).
+
+% La persona que utiliza el ecógrafo trabaja en pediatría y no es del Hospital Universitario ni del Militar.
+restriccion(_, pediatria, universitario, ecografo).
+restriccion(_, pediatria, militar, ecografo).
+
+% El médico interesado en inmunología usa el resonador magnético, pero no es Elena.
+restriccion(elena, _, _, resonancia).
+
+% Elena está interesada en bioética y no utiliza el electrocardiógrafo.
+restriccion(elena, _, _, electrocardiografo).
+
+% Relaciones específicas deducidas
+datos(ana, cardiologia, militar, electrocardiografo, genetica).
+datos(bruno, pediatria, privado, ecografo, farmacologia).
+datos(carla, dermatologia, regional, resonancia, inmunologia).
+datos(diego, oncologia, general, tomografo, microbiologia).
+datos(elena, neurologia, universitario, dermatoscopio, bioetica).
+
+% Regla para determinar las relaciones entre los atributos
+resolver_relacion(Medico, Especialidad, Hospital, Equipo, Interes) :-
+    datos(Medico, Especialidad, Hospital, Equipo, Interes),
+    \+ restriccion(Medico, Especialidad, Hospital, Equipo).
+
+% Método para obtener la especialidad de un médico
+especialidad_de(Medico, Especialidad) :-
+    resolver_relacion(Medico, Especialidad, _, _, _).
+
+% Método para obtener el hospital de un médico
+hospital_de(Medico, Hospital) :-
+    resolver_relacion(Medico, _, Hospital, _, _).
+
+% Método para obtener el equipo de un médico
+equipo_de(Medico, Equipo) :-
+    resolver_relacion(Medico, _, _, Equipo, _).
+
+% Método para obtener el interés de investigación de un médico
+interes_de(Medico, Interes) :-
+    resolver_relacion(Medico, _, _, _, Interes).
 
 
 % ------------------- Datos para el arbol genealogico -------------------------
